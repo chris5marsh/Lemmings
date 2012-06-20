@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+	<head>
+		<title>JS1k, 1k demo submission [ID]</title>
+		<meta charset="utf-8" />
+    <style>
+			/*
+			p {
+			-webkit-animation:w 400ms infinite step-start;
+			-moz-animation:w 400ms infinite step-start;
+			-ms-animation:w 400ms infinite step-start;
+			animation:w 400ms infinite step-start;
+			}
+			*/
+			@-webkit-keyframes w {
+			0%			{ background-position:      0% 0; }
+			14.286%	{ background-position:-85.714% 0; }
+			28.571%	{ background-position:-71.429% 0; }
+			42.857%	{ background-position:-57.143% 0; }
+			57.143%	{ background-position:-42.857% 0; }
+			71.429%	{ background-position:-28.571% 0; }
+			85.714%	{ background-position:-14.286% 0; }
+			100%		{ background-position:      0% 0; }
+			}		
+		</style>
+	</head>
+	<body>
+		<canvas id="c"></canvas>
+		<script>
+			var b = document.body;
+			var c = document.getElementsByTagName('canvas')[0];
+			var a = c.getContext('2d');
+			document.body.clientWidth; // fix bug in webkit: http://qfox.nl/weblog/218
+		</script>
+		<script>
+// start of submission //
+b.style.background="#332";
+var w = Math.max(b.scrollWidth, b.offsetWidth, b.clientWidth),
+		h = Math.max(b.scrollHeight, b.offsetHeight, b.clientHeight),
+		n = (w*h)/1e5;
+		console.log(w,h,n);
+		for(var i=0; i<n; i++) {
+			var p = document.createElement('p'),
+					v = Math.random()*w,
+					g = Math.random()*h,
+					f = Math.ceil(Math.random()*10);
+			p.style.position="absolute";
+			p.style.left=v+"px";
+			p.style.top=g+"px";
+			p.style.width=(16*f)+"px";
+			p.style.height=(16*f)+"px";
+			p.style.backgroundImage="url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAAQCAYAAADeWHeIAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2RpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpFRTY3RERCNDY1OTRFMTExODc3MEU5OTlCRTA3RTJGQiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyNzU5NTE1Qzk0NkExMUUxODc3Q0UzN0FGMkI5MUQ0MyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyNzU5NTE1Qjk0NkExMUUxODc3Q0UzN0FGMkI5MUQ0MyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IFdpbmRvd3MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpFRTY3RERCNDY1OTRFMTExODc3MEU5OTlCRTA3RTJGQiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpFRTY3RERCNDY1OTRFMTExODc3MEU5OTlCRTA3RTJGQiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PncrAgYAAAUGSURBVHja7JlNTGNVFMfPfa+Uaj/eZ9vR8FFaikNmx2Sc2LixG5O6mhonEzYu0JW6NsadmYUmGGOCC5NZqVuYGJ0ZDRQQESMM0w4mzvA1LQyBQfoFJYoCPZ5bJhp1yryLIUbb15y895r3v+f8zj333vfBEBHqW+1uUj0F9QI4to0pLFLZmyzOZOaoteT+J/j5EvBXAwYO0CAGOpkBcfBCN5WK40HXVtWH4RJMAsJTUIAvaW9C3LKefIEC0cox7UV8/6kdzkAmrKsh/urCDAWdB1R+dCN8R8f3A7LseJk09FPSpA/QkUgCecKnSROh5HHfdC7cgQG4yGNQlir+L/L/hOJfIL+5/z9/VQC2zDCMAZxZ/xw7z4ZQkpkqkgC2RPp90q+RvpX0jFlPgH6/AIsEkHcLJf9v8e+S/zT515jlmYCPevZTbfBXrSCtTeldnP8ai8v38MYXV1DxeKIiFehuduJSegw375J+iPSKmB5aANtLrfj9PQIIhvoliQmNYG1JwcUCxZ8h/ynyr3qERrC+qOBSaQyzc+s4fQR+nfLH+bNp0h+BXwqy3s6fWzG5cuVY+as24teUnszkLJ4MF9BrtPeJBMCrPdzcjDPDC9jRXkDTCPWJVDAjfVtTE95Nj2PxiAVktLlwJXUbO3n8CsUvMgJJ7w2qvcmheYycyaHfK8bPzauo3TPD8/hkVx59phg/N8WlRJPT41gurGFyWJzfH1YuraRmsb2tiOYh/FUbOeFVetI3fkBDK/A7EaEpyGd6um9+9S2Gg3ukzZOpUcXjjlrtBLfLGckkx3A1lcNgYIMKMIBCBUjXdgYDOJ2YRU0Rj5+bDfTY2a4NHOyfo9HvEtZLkhEPB3N4fegW5dAdF+E/GERG/FSoiMs3b2FHqAkZEy1ApXs6cRt5DIfxV30M/GV3fy2bk0CS+ZlNFX26KJf3IJfnYgRd1ROjn36SMA09/jCdLEuOlibfm412E555XoM7GRts5MrUnnXfHpcj0tf7PpzvCcLmFn/RhTui8Ts9v+689UYBXn3dgNJ241H4i5y/XGZA3P1D/db4f9fjXnGV+m4jK1FH7dOsKOY/u4WZ8z1e+PDdHJj6nir0HoB3gk32x6LnHqcAZOEEbuS2B55+7jXIF7dpJJTA79NBlqy9cnC7XJGPPngvVtpWYXWdU/PYR8lcXVb05MchSY2OCy+/DYsZKhxsoH/NOGOS5edwzm+3++MXXvLD7EIDdaIY/4EvM54vSvDsC3aw2bxgt4u+cjFixc0GKuIO6Hunn/LySMQqv6aoUYDHXlnMOOHci37I5v2RqvwPmhZM3R1PXL5K0wei1yzS9KvHxNZwLaarmYrWa57G4csfYyjQYmkdlmVZPXXyDD5B9w6SlKepj6+hJTJr67DPVLqTI+OoqXOkzZEOyTLUlmaZ4Z/yc18+c6Wi1dTTmBiwzs8ZfWawl8fM4wcoYGfHJp7wWedPjX5Dvu9U9LrKGarzVw0i1Bbom6F1PDUyQTcgYmsovz41MlXR6qo7Zuiq5ZcgfK2cGvwMpwYn0PloU8V4O6mRq5ZuhHymQQm4Rn7bSdtMOs4wKcTwr/ITY2rkWiVmHj/nvz40gclj4meHfQzyeZVuPgln86WB/f3yjsgUykfRwXJQGiiXRbV8rdwl7dYA/89reOi8geLIPzQOWZIdHrczslkqTfyhFWeoFX5W/xpY/xhU32p4+02AAQAK5aHry22RmQAAAABJRU5ErkJggg==)";
+			p.style.backgroundSize="cover";
+			p.style.backgroundRepeat="repeat";
+			p.style.backgroundposition="0 0";
+			p.style.WebkitAnimation="w 420ms infinite step-start";
+			p.style.MozAnimation="w 420ms infinite step-start";
+			p.style.MsAnimation="w 420ms infinite step-start";
+			p.style.animation="w 420ms infinite step-start";
+			b.appendChild(p);
+		}
+// end of submission //
+		</script>
+	</body>
+</html>
